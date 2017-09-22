@@ -20,6 +20,16 @@ function drawGold(ctx, gold) {
 	ctx.fillText(gold.toString(), 35 + 1*60, 40 + 4*60);
 }
 
+function drawSelection(ctx, x, y) {
+	if (index) {
+		ctx.beginPath();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "yellow";
+		ctx.rect(10 + x*60 ,10 + y*60,50,50); 
+		ctx.stroke();
+	}
+}
+
 function drawField(ctx, x, y, card, field) {
 	ctx.beginPath();
 	ctx.lineWidth = getWidth(card, field);
