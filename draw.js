@@ -21,13 +21,11 @@ function drawGold(ctx, gold) {
 }
 
 function drawSelection(ctx, x, y) {
-	if (index) {
-		ctx.beginPath();
-		ctx.lineWidth = 3;
-		ctx.strokeStyle = "yellow";
-		ctx.rect(10 + x*60 ,10 + y*60,50,50); 
-		ctx.stroke();
-	}
+	ctx.beginPath();
+	ctx.lineWidth = 3;
+	ctx.strokeStyle = "yellow";
+	ctx.rect(10 + x*60 ,10 + y*60,50,50); 
+	ctx.stroke();
 }
 
 function drawField(ctx, x, y, card, field) {
