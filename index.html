@@ -22,7 +22,10 @@
 		var player = {}; 
 		player.deck = shuffleDeck(createDeck('PLAYER'))
     player.hand = [];
+		player.gold = 3;
+		player.player = 'PLAYER';
 		var board = createBoard();
+		var selectedCard = null;
 	  
     while (player.hand.length < 3) { drawCard(player.deck, player.hand); }
       
@@ -32,9 +35,22 @@
 			ctx.fillStyle = "white";
 			ctx.fillRect(0, 0, w, h);
 			drawBoard(ctx, board);
+			drawGold(ctx, player.gold);
    		drawDeckHand(player.deck, player.hand, ctx);
 		};
 		
+		function nextTurn() {
+			for (i = 0; i < 9; i++) {
+				for (j = 0; j < 3; j++) {
+					if (board[i][j].card && board[i][j].card.owner == 'PLAYER' && board[i][j].card.effect) {
+						board[i][j].card.effect(player);
+					}
+				}
+			}
+			drawCard(player.deck, player.hand);
+			draw();
+		}
+				
 		canvas.addEventListener('click', function(event) {
     		var x = event.pageX - canvas.offsetLeft, y = event.pageY - canvas.offsetTop;
 
@@ -42,8 +58,18 @@
 				var ix = Math.floor(x / 60);
 				var iy = Math.floor(y / 60);
 				if (ix == 0 && iy == 4) {
-					drawCard(player.deck, player.hand);
-					draw();
-				}}, false);
+					nextTurn();
+				}
+				if (ix > 1 && iy == 4 && (ix - 2) < player.hand.length) {
+					var card = player.hand[ix - 2];
+					if (card.type == 'EVENT' && player.gold >= card.cost) {
+						player.hand.splice(ix - 2, 1);
+						player.gold -= card.cost;
+						if (card.effect) {
+							card.effect();
+						}
+						draw();
+					}
+		}, false);
   });
 </script>
