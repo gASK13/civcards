@@ -44,7 +44,7 @@ function drawField(ctx, x, y, card, field) {
 
 function getWidth(card, field) {
 	if (card) { return 3; }
-	if (field.build) { return 2; }
+	if (field && field.build) { return 2; }
 	return 1;
 }
 
