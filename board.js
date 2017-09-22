@@ -2,7 +2,7 @@ function createBoard() {
   var board = Create2DArray(9);
   for (i = 0; i < 9; i++) {
     for (j = 0; j < 3; j++) {
-      board[i,j] = new {};
+      board[i,j] = {};
       if (i < 3) {
         board[i,j].build = 'PLAYER';
       }
