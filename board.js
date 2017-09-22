@@ -19,7 +19,7 @@ function createBoard() {
   }
    
   board[1][1].card = createCard('Village', 'PLAYER');
-  board[1][7].card = createCard('Village', 'ENEMY');
+  board[7][1].card = createCard('Village', 'ENEMY');
   
   return board;
 };
