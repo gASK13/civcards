@@ -47,7 +47,9 @@
 					}
 				}
 			}
-			drawCard(player.deck, player.hand);
+			if (player.hand.length < 7) {
+				drawCard(player.deck, player.hand);
+			}
 			draw();
 		}
 				
