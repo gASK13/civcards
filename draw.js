@@ -1,6 +1,6 @@
 function drawDeckHand(deck, hand, ctx) {
 	drawField(ctx, 0, 4, { name: deck.length.toString() }, null);
-	for(i = 0; i < 3; i++) {
+	for(i = 0; i < hand.length; i++) {
 		drawField(ctx, 2 + i, 4, hand[i], null);
 	}
 }
