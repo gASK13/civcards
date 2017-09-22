@@ -93,12 +93,16 @@
 					player.hand.splice(selectedCard, 1);
 					player.gold -= card.cost;
 					board[ix][iy].card = card;
+					selectedCard = -1;
+					draw();
 				}
 				if (player.hand[selectedCard].type == 'UNIT' && !board[ix][iy].card && board[ix][iy].units && board[ix][iy].units == 'PLAYER') {
 					var card = player.hand[selectedCard];
 					player.hand.splice(selectedCard, 1);
 					player.gold -= card.cost;
 					board[ix][iy].card = card;
+					selectedCard = -1;
+					draw();
 				}
 			}
 		}, false);
