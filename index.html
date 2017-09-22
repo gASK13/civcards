@@ -24,12 +24,30 @@
     player.hand = [];
 		var board = createBoard();
 	  
-	  
     while (player.hand.length < 3) { drawCard(player.deck, player.hand); }
       
-    drawBoard(ctx, board);
-   	drawDeckHand(player.deck, player.hand, ctx);
+    draw();
+		
+		function draw() {
+			drawBoard(ctx, board);
+   		drawDeckHand(player.deck, player.hand, ctx);
+		};
+		
+		canvas.addEventListener('click', function(event) {
+    		var x = event.pageX - canvas.offsetLeft, y = event.pageY - canvas.offsetTop;
+
+				if (x % 60 < 10 || y % 60 < 10) { return; }
+				var ix = Math.floor(x / 60);
+				var iy = Math.floor(y / 60);
+				if (ix == 0 && iy == 4) {
+					drawCard(player.deck, player.hand);
+					draw();
+				}
+    });
+
+}, false);
   });
-                    
+  
+	
  
 </script>
