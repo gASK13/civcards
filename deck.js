@@ -26,7 +26,7 @@
   };
  
  function drawCard(deck, hand) {
-    hand.push(deck.pop);
+    hand.push(deck.pop());
  };
   
   
