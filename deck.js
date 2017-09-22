@@ -1,14 +1,14 @@
 // createDeck
-  function createDeck() {
+  function createDeck(owner) {
     var deck = [];
     for (i = 0; i < 10; i++) {
-      deck.push(createCard('Warrior'));
+      deck.push(createCard('Warrior', owner));
     }
     for (i = 0; i < 5; i++) {
-      deck.push(createCard('Archer'));
+      deck.push(createCard('Archer', owner));
     }
     for (i = 0; i < 3; i++) {
-      deck.push(createCard('Farm'));
+      deck.push(createCard('Farm', owner));
     }
     return deck;
   };
