@@ -26,7 +26,7 @@
 		player.gold = 3;
 		player.player = 'PLAYER';
 		var board = createBoard();
-		var selectedCard = null;
+		var selectedCard = -1;
 		game.player = player;
 		game.board = board;
 	  
@@ -40,7 +40,7 @@
 			drawBoard(ctx, board);
 			drawGold(ctx, player.gold);
    		drawDeckHand(player.deck, player.hand, ctx);
-			if (selectedCard) {
+			if (selectedCard >= 0) {
 				drawSelection(ctx, selectedCard + 2, 4);
 			}
 		};
@@ -78,14 +78,28 @@
 					}
 					draw();
 				} else if (selectedCard == ix - 2) {
-					selectedCard = null;
+					selectedCard = -1;
 					draw();
 				} else {
-					selectedCard = ix - 2;
-					draw();
+					if (player.gold >= card.cost) {
+						selectedCard = ix - 2;
+						draw();
+					}
 				}
 			}
 			if (selectedCard && ix < 9 && iy < 3) {
+				if (player.hand[selectedCard].type == 'BUILDING' && !board[ix][iy].card && board[ix][iy].build && board[ix][iy].build == 'PLAYER') {
+					var card = player.hand[selectedCard];
+					player.hand.splice(selectedCard, 1);
+					player.gold -= card.cost;
+					board[ix][iy].card = card;
+				}
+				if (player.hand[selectedCard].type == 'UNIT' && !board[ix][iy].card && board[ix][iy].units && board[ix][iy].units == 'PLAYER') {
+					var card = player.hand[selectedCard];
+					player.hand.splice(selectedCard, 1);
+					player.gold -= card.cost;
+					board[ix][iy].card = card;
+				}
 			}
 		}, false);
   });
