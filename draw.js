@@ -13,6 +13,13 @@ function drawBoard(ctx, board) {
 	}
 }
 
+function drawGold(ctx, gold) {
+	ctx.font = "bold 25px Arial";
+	ctx.textAlign="center"; 
+	ctx.fillStyle = "orange";
+	ctx.fillText(gold.toString(), 35 + 1*60, 40 + 4*60);
+}
+
 function drawField(ctx, x, y, card, field) {
 	ctx.beginPath();
 	ctx.lineWidth = getWidth(card, field);
