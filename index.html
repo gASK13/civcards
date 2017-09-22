@@ -29,6 +29,8 @@
     draw();
 		
 		function draw() {
+			ctx.fillStyle = "white";
+			ctx.fillRect(0, 0, w, h);
 			drawBoard(ctx, board);
    		drawDeckHand(player.deck, player.hand, ctx);
 		};
