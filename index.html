@@ -19,6 +19,7 @@
 	  var h = $("#canvas").height();
     
     // draw deck and hand
+		var game = {};
 		var player = {}; 
 		player.deck = shuffleDeck(createDeck('PLAYER'))
     player.hand = [];
@@ -26,6 +27,8 @@
 		player.player = 'PLAYER';
 		var board = createBoard();
 		var selectedCard = null;
+		game.player = player;
+		game.board = board;
 	  
     while (player.hand.length < 3) { drawCard(player.deck, player.hand); }
       
@@ -43,7 +46,7 @@
 			for (i = 0; i < 9; i++) {
 				for (j = 0; j < 3; j++) {
 					if (board[i][j].card && board[i][j].card.owner == 'PLAYER' && board[i][j].card.effect) {
-						board[i][j].card.effect(player);
+						board[i][j].card.effect(game);
 					}
 				}
 			}
@@ -68,7 +71,7 @@
 						player.hand.splice(ix - 2, 1);
 						player.gold -= card.cost;
 						if (card.effect) {
-							card.effect();
+							card.effect(game);
 						}
 						draw();
 					}
