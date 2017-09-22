@@ -33,7 +33,7 @@
   });
                     
   function drawDeckHand(deck, hand, ctx) {
-		drawField(ctx, 0, 4, { name: deck.length }, null);
+		drawField(ctx, 0, 4, { name: deck.length.toString() }, null);
   	for(i = 0; i < 3; i++) {
 			drawField(ctx, 2 + i, 4, hand[i], null);
   	}
@@ -42,7 +42,7 @@
 	function drawBoard(ctx, board) {
 		for(i = 0; i < 9; i++) {
 			for(j = 0; j < 3; j++) {
-				drawField(ctx, i, j, board[i,j].card, board[i,j]);
+				drawField(ctx, i, j, board[i][j].card, board[i][j]);
 			}
 		}
 	}
