@@ -10,8 +10,8 @@
       card.type = 'BUILDING';
       card.subtype = 'PRODUCTION';
       card.cost = 3;
-      card.effect = function(player) { 
-         player.gold++;
+      card.effect = function(game) { 
+         game.player.gold++;
       };
     } else if (type == 'Archer') {
       card.name = 'Archer';
@@ -26,10 +26,10 @@
       card.name = 'Call to Arms';
       card.type = 'EVENT';
       card.cost = 1;
-      card.effect = function(player) { 
-        player.deck.push(createCard('Recruit', player.player));
-        player.deck.push(createCard('Recruit', player.player));
-        player.deck.push(createCard('Recruit', player.player));
+      card.effect = function(game) { 
+        game.player.deck.push(createCard('Recruit', player.player));
+        game.player.deck.push(createCard('Recruit', player.player));
+        game.player.deck.push(createCard('Recruit', player.player));
       };
     } else if (type == 'Recruit') {
       card.name = 'Recruit';
