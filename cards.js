@@ -27,9 +27,9 @@
       card.type = 'EVENT';
       card.cost = 1;
       card.effect = function(game) { 
-        game.player.deck.push(createCard('Recruit', player.player));
-        game.player.deck.push(createCard('Recruit', player.player));
-        game.player.deck.push(createCard('Recruit', player.player));
+        game.player.deck.push(createCard('Recruit', game.player.player));
+        game.player.deck.push(createCard('Recruit', game.player.player));
+        game.player.deck.push(createCard('Recruit', game.player.player));
       };
     } else if (type == 'Recruit') {
       card.name = 'Recruit';
