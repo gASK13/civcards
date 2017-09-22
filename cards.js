@@ -1,5 +1,5 @@
 // card types
-  function createCard(type) {
+  function createCard(type, owner) {
     var card = {};
     if (type == 'Warrior') {
       card.name = 'Warrior';
@@ -14,7 +14,14 @@
       card.name = 'Archer';
       card.type = 'UNIT';
       card.cost = 2;
+    } else if (type == 'Village') {
+      card.name = 'Village';
+      card.type = 'BUILDING';
+      card.subtype = 'CITY';
+      card.cost = 0;
     }
+    
+    card.owner = owner;
     return card;
 
   };
