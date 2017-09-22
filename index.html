@@ -87,7 +87,7 @@
 					}
 				}
 			}
-			if (selectedCard && ix < 9 && iy < 3) {
+			if (selectedCard >= 0 && ix < 9 && iy < 3) {
 				if (player.hand[selectedCard].type == 'BUILDING' && !board[ix][iy].card && board[ix][iy].build && board[ix][iy].build == 'PLAYER') {
 					var card = player.hand[selectedCard];
 					player.hand.splice(selectedCard, 1);
