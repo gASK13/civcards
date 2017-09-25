@@ -1,0 +1,6 @@
+var TILE_HEIGHT = 100;
+var TILE_WIDTH = 100;
+var TILE_SPACING = 15;
+
+var DEFAULT_INCOME = 0;
+var MAX_HAND_SIZE = 5;
